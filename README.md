@@ -76,7 +76,7 @@ add graficos e explicação
 - **P0 vs DM:** Correlação fraca positiva (r = 0,216)
 - **Pulsares normais vs millissegundos:** Comportamentos opostos no diagrama P0-AGE
 
-### 6.4 Vizualizar Notebook da EDA
+### 6.4 Notebook com Processo e Resultados da EDA
 ---
 
 ## 7. Principais Insights
