@@ -7,7 +7,7 @@
 
 ## 1. Visão Geral
 
-Análise estatística exploratória do catálogo de pulsares do ATNF (Australia Telescope National Facility), investigando distribuições e relações entre propriedades físicas dessas estrelas de nêutrons para a disciplina de Estatística Aplicada I
+Análise estatística exploratória do catálogo de pulsares do ATNF (Australia Telescope National Facility), investigando distribuições e relações entre propriedades físicas desses objetos para a disciplina de Estatística Aplicada I
 
 ---
 
