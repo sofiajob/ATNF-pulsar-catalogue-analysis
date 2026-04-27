@@ -51,9 +51,10 @@ Tabela 2: Tecnologias e ferramentas utilizadas
 | Ferramenta | Finalidade |
 |------------|------------|
 | Google Colab | Ambiente de desenvolvimento em nuvem |
+| python | Linguagem de programação |
 | psrqpy | Acesso ao catálogo ATNF (Pitkin, 2018) |
-| Python (pandas e numpy) | Processamento e análise dos dados |
-| matplotlib e seaborn | Visualizações gráficas |
+| pandas e numpy (python) | Bibliotecas para processamento e análise dos dados |
+| matplotlib e seaborn (python) | Bibliotecas para visualizações gráficas |
 
 ## 5. Hipóteses Investigadas
 
