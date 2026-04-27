@@ -22,13 +22,13 @@ Análise estatística exploratória do catálogo de pulsares do ATNF (Australia 
 
 ## 3. Variáveis Selecionadas
 
-| Tipo | Variável | Descrição |
+| Variável | Tipo | Descrição |
 |------|----------|-----------|
-| Qualitativa | `TYPE` | Tipo de pulsar (normal, millisecond, AXP, etc.) |
-| Qualitativa | `TEM_ASSOC` | Associação a remanescentes de supernova ou aglomerados |
-| Quantitativa | `P0` | Período de rotação (segundos) |
-| Quantitativa | `DM` | Medida de dispersão (pc/cm³) |
-| Quantitativa | `AGE` | Idade característica (anos) |
+| `TYPE` | Qualitativa Nominal | Classificação quanto ao tipo de pulsar (normal, millisecond, AXP, etc.) |
+| `TEM_ASSOC` | Qualitativa Nominal Binária | Associação a remanescentes de supernova ou aglomerados catalogada |
+| `P0` | Quantitativa Contínua | Período de rotação (segundos) |
+| `DM` | Quantitativa Contínua | Medida de dispersão (pc/cm³) |
+| `AGE` | Quantitativa Contínua | Idade característica (anos) |
 
 **Fonte dos dados:** ATNF Pulsar Catalogue (acessado via biblioteca `psrqpy`) 
 add link pra fonte 
@@ -43,6 +43,17 @@ add link pra fonte
 - **Tamanho da amostra:** 4.351 pulsares
 
 ---
+
+## 4.1 tecnologias e Ferramentas Utilizadas
+
+Tabela 2: Tecnologias e ferramentas utilizadas
+
+| Ferramenta | Finalidade |
+|------------|------------|
+| Google Colab | Ambiente de desenvolvimento em nuvem |
+| psrqpy | Acesso ao catálogo ATNF (Pitkin, 2018) |
+| Python (pandas e numpy) | Processamento e análise dos dados |
+| matplotlib e seaborn | Visualizações gráficas |
 
 ## 5. Hipóteses Investigadas
 
