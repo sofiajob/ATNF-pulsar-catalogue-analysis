@@ -27,7 +27,7 @@ Análise estatística exploratória do catálogo de pulsares do ATNF (Australia 
 | `TYPE` | Qualitativa Nominal | Classificação quanto ao tipo de pulsar (normal, millisecond, AXP, etc.) |
 | `TEM_ASSOC` | Qualitativa Nominal Binária | Associação a remanescentes de supernova ou aglomerados catalogada |
 | `P0` | Quantitativa Contínua | Período de rotação (segundos) |
-| `DM` | Quantitativa Contínua | Medida de dispersão (pc/cm³) |
+| `DM` | Quantitativa Contínua | Medida de dispersão (quantidade de elétrons livres entre a Terra e o pulsar em pc/cm³) |
 | `AGE` | Quantitativa Contínua | Idade característica (anos) |
 
 **Fonte dos dados:** ATNF Pulsar Catalogue (acessado via biblioteca `psrqpy`) 
