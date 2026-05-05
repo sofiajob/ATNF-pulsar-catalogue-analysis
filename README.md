@@ -1,52 +1,36 @@
 # 📈 ATNF Pulsar Catalogue - Análise Estatística Exploratória
+### Análise estatística exploratória do catálogo de pulsares do Australia Telescope National Facility, investigando distribuições e relações entre propriedades físicas desses objetos para a disciplina de Estatística Aplicada I
 
-**Autoria:** Sofia Job - UFSC  
-**Disciplina:** Estatística Aplicada I
+## Visão Geral e Variáveis Selecionadas
 
----
+- **4.351 pulsares** analisados
+- **Objetivo:** Estudar a distribuição dos dados e relacionar as variaveis de interesse.
 
-## 1. Visão Geral
+| Variável | Descrição |
+|------|-----------|
+| `TYPE` | Classificação quanto ao tipo de pulsar (normal, millisecond, AXP, etc.) |
+| `TEM_ASSOC` | Associação a remanescentes de supernova ou aglomerados catalogada |
+| `P0` | Período de rotação (segundos) |
+| `DM` | Medida de dispersão (quantidade de elétrons livres entre a Terra e o pulsar em pc/cm³) |
+| `AGE` | Idade característica (anos) |
 
-Análise estatística exploratória do catálogo de pulsares do ATNF (Australia Telescope National Facility), investigando distribuições e relações entre propriedades físicas desses objetos para a disciplina de Estatística Aplicada I
-
----
-
-## 2. Objetivos
-
-- Descrever a distribuição das variáveis selecionadas
-- Construir tabelas de frequência para variáveis de interesse
-- Calcular medidas de resumo (média, mediana, desvio padrão, etc.)
-- Visualizar relações entre variáveis duas a duas
+> Nota: `TEM_ASSOC` foi derivada da coluna ASSOC -- explicar
 
 ---
 
-## 3. Variáveis Selecionadas
+## Principais Resultados
 
-| Variável | Tipo | Descrição |
-|------|----------|-----------|
-| `TYPE` | Qualitativa Nominal | Classificação quanto ao tipo de pulsar (normal, millisecond, AXP, etc.) |
-| `TEM_ASSOC` | Qualitativa Nominal Binária | Associação a remanescentes de supernova ou aglomerados catalogada |
-| `P0` | Quantitativa Contínua | Período de rotação (segundos) |
-| `DM` | Quantitativa Contínua | Medida de dispersão (quantidade de elétrons livres entre a Terra e o pulsar em pc/cm³) |
-| `AGE` | Quantitativa Contínua | Idade característica (anos) |
+### Add imagens dos principais graficos 
 
-**Fonte dos dados:** ATNF Pulsar Catalogue (acessado via biblioteca `psrqpy`) 
-add link pra fonte 
+- **Distribuição bimodal** do período de rotação → duas populações distintas: normais (0,5-5s) e millissegundos (<0,02s)
+- **84%** dos pulsares não possuem associação conhecida
+- **15,7%** possuem associação catalogada (GRS, GC, SNR, XRS)
+- **Correlação fraca** entre período e idade (r = -0,027) devido à separação das populações
 
+### Link para Google Colab: ___
 ---
 
-## 4. Metodologia
-
-- **Coleta:** Biblioteca `psrqpy` em Python
-- **Ambiente:** Google Colab
-- **Análise:** `pandas` para tabelas, `matplotlib`/`seaborn` para vizualizações
-- **Tamanho da amostra:** 4.351 pulsares
-
----
-
-## 4.1 tecnologias e Ferramentas Utilizadas
-
-Tabela 2: Tecnologias e ferramentas utilizadas
+## Tecnologias e Ferramentas Utilizadas
 
 | Ferramenta | Finalidade |
 |------------|------------|
@@ -56,56 +40,12 @@ Tabela 2: Tecnologias e ferramentas utilizadas
 | pandas e numpy | Bibliotecas para processamento e análise dos dados |
 | matplotlib e seaborn | Bibliotecas para visualizações gráficas |
 
-## 5. Hipóteses Investigadas
-
-### Hipótese 1 (P0 vs AGE)
-Pulsares mais velhos têm períodos de rotação mais longos devido à perda de energia rotacional.
-
-### Hipótese 2 (DM vs DIST)
-Pulsares mais distantes apresentam maior medida de dispersão, pois o sinal atravessa mais matéria interestelar.
-
-### Hipótese 3 (P0 vs DM)
-Não há relação direta entre período de rotação e medida de dispersão, pois são determinados por fatores físicos distintos.
-
-### Hipótese 4 (Millissegundos)
-Pulsares millissegundo formam uma subpopulação distinta, com idades elevadas mas períodos muito curtos (objetos "reciclados").
-
 ---
 
-## 6. Resultados Principais (transformar 6 e 7 em um unico tópico --> Resultados e Discussões)
-
-### 6.1 Tabelas de Frequência
-- `TEM_ASSOCIACAO`: coluna feita a partir da variavel `ASSOC`, onde os pulsares foram classificados de acordo com a presença ou não de associação com objeto astronomico catalogado. 'S' para os que possuem, 'N' caso contrario. 84,3% sem associação, 15,7% com associação
-- `TYPE`: 86% não classificados, 7% HE, 2,8% RRAT, etc.
-
-### 6.2 Medidas de Resumo 
-(add print das tabelas)
-
-### 6.3 Relações entre Variáveis
-add graficos e explicação
-
-- **P0 vs AGE:** Correlação global baixa (r = -0,027), mas gráfico revela duas populações distintas
-- **P0 vs DM:** Correlação fraca positiva (r = 0,216)
-- **Pulsares normais vs millissegundos:** Comportamentos opostos no diagrama P0-AGE
-
-### 6.4 Notebook com Processo e Resultados da EDA
----
-
-## 7. Principais Insights
-
-1. **Duas populações distintas:** Pulsares normais e millissegundos ocupam regiões diferentes do diagrama P0-AGE
-2. **Millissegundos são "anômalos":** Muito velhos (10⁸-10¹⁰ anos) mas com períodos extremamente curtos (0,001-0,02s)
-3. **Limitação da correlação de Pearson:** A correlação global baixa esconde uma estrutura bimodal importante
-4. **Escala log é essencial:** A relação entre variáveis só é visível em escala logarítmica
-5. > loading
-
-
-## 8. Referências Bibliograficas
+## Referências
 
 >add link para o ATNF
 
->add csv do df que usei (?)
-
->add artigo usado de ref pelo ATNF
+>add artigo principal usado de ref pelo ATNF
 
 >add aqueles outros dois artigos sobre pulsares
