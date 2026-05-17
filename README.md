@@ -142,6 +142,8 @@
 Sofia Fernandes Job Junqueira
 
 ## Referências
-> add psrqpy licença
->add link para o ATNF
->add artigo principal usado de ref pelo ATNF
+- [ATNF Pulsar Catalogue](https://www.atnf.csiro.au/research/pulsar/psrcat) - Base de dados oficial
+
+- [Manchester, R.N. et al. (2005) - ATNF Pulsar Catalogue](https://doi.org/10.1086/428488)
+
+- [Pitkin, M. (2018) - psrqpy: Python interface for ATNF catalogue](https://doi.org/10.21105/joss.00538)
