@@ -5,11 +5,15 @@
 ### Análise estatística exploratória do catálogo de pulsares do Australia Telescope National Facility, investigando distribuições e relações entre propriedades físicas desses objetos para a disciplina de Estatística Aplicada I
 
 ## Principais Descobertas
-- **4.351 pulsares** na versão 2.7.0 do catálogo
-- **Duas subpopulações distintas**: pulsares normais (período ~0.5-5s) e millissegundos (~0.001-0.02s)
-- Têndencia na correlação entre idade e período rotacional para pulsares normais
-- Apenas **13.9%** dos pulsares possuem classificação por tipo catalogada
-- **84.3%** não têm associação conhecida a objetos astronômicos
+
+| # | Descoberta | Detalhe |
+|:-:|:-----------|:--------|
+| 🥇 | **Millissegundos: velhos mas rápidos** | Período de 0,001-0,02s com bilhões de anos de idade — comportamento anômalo que evidencia reaceleração em sistemas binários |
+| 🥈 | **84,3% sem associação catalogada** | Apenas 15,7% dos pulsares têm origem conhecida — grande potencial para novas descobertas |
+| 🥉 | **CV da idade: 1570%** | Média de ~2 bilhões de anos vs mediana de ~10 milhões — poucos pulsares extremamente velhos puxam a média |
+| 4️⃣ | **CV do período: 220%** | Período é 2x mais disperso que a medida de dispersão — maior diversidade comportamental |
+| 5️⃣ | **Duas populações distintas** | Pulsares normais (0,5-5s) vs millissegundos (0,001-0,01s) — evidência clara no histograma |
+| 6️⃣ | **Viés observacional no DM** | Pulsares com alta medida de dispersão estão em regiões de difícil detecção — crítica à qualidade dos dados |
 
 ### 🔗 [Open in Colab - ATNF Pulsar Catalogue Análise e Vizualizações](notebooks/Cópia_de_estatistica_eda_extracao_dados.ipynb)
 
