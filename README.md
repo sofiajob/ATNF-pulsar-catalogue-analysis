@@ -144,6 +144,6 @@ Sofia Fernandes Job Junqueira
 ## Referências
 - [ATNF Pulsar Catalogue](https://www.atnf.csiro.au/research/pulsar/psrcat) - Base de dados oficial
 
-- [Manchester, R.N. et al. (2005) - ATNF Pulsar Catalogue](https://doi.org/10.1086/428488)
-
-- [Pitkin, M. (2018) - psrqpy: Python interface for ATNF catalogue](https://doi.org/10.21105/joss.00538)
+- **Manchester, R. N.** et al. (2005) - The Australia Telescope National Facility Pulsar Catalogue. *The Astronomical Journal*, 129(4), 1993. DOI: [10.1086/428488](https://doi.org/10.1086/428488)
+  
+- **Pitkin, M.** (2018) - psrqpy: Python interface for ATNF catalogue. *JOSS*, 3(22), 538. DOI: [10.21105/joss.00538](https://doi.org/10.21105/joss.00538) | [GitHub](https://github.com/mattpitkin/psrqpy)
