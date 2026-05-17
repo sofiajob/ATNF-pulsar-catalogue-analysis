@@ -11,7 +11,7 @@
 - Apenas **13.9%** dos pulsares possuem classificação por tipo catalogada
 - **84.3%** não têm associação conhecida a objetos astronômicos
 
-### 🔗 Acesse o código aqui: ___
+### 🔗 [Open in Colab - ATNF Pulsar Catalogue Análise e Vizualizações](notebooks/Cópia_de_estatistica_eda_extracao_dados.ipynb)
 
 ---
 
@@ -33,12 +33,7 @@
 
 ### 1. Classificação e Associação dos Pulsares
 
-![Distribuição de associações](docs/figura1.png)
-
-> 💡 **Insight:** As categorias HE, RRAT e NRAD representam **93.8%** dos pulsares classificados. AXP e XINS são tipos raros ou de detecção recente.
-
-![Distribuição de associações](docs/figura1.png)
-<center>Tabela 2: Distribuição da variável TEM_ASSOC</center>
+💡 **Insight:** As categorias HE, RRAT e NRAD representam **93.8%** dos pulsares classificados. AXP e XINS são tipos raros ou de detecção recente.
 
 | Associação | Frequência Absoluta | Frequência Relativa (%) |
 |:----------:|:-------------------:|:-----------------------:|
@@ -46,7 +41,7 @@
 | Sem associação conhecida (N) | 3.668 | 84.3% |
 | **Total** | **4.351** | **100%** |
 
-> 💡 **Insight:** A predominância de pulsares sem associação conhecida (84.3%) reflete o desafio de rastrear a origem desses objetos antigos, cujas evidências de formação frequentemente se dissipam.
+💡 **Insight:** A predominância de pulsares sem associação conhecida (84.3%) reflete o desafio de rastrear a origem desses objetos antigos, cujas evidências de formação frequentemente se dissipam.
 
 ---
 
@@ -58,15 +53,15 @@
 | **DM** (dispersão) | 351 pc/cm³ | 163 pc/cm³ | 98% |
 | **AGE** (idade) | ~2 bi anos | ~10 mi anos | 1570% |
 
-> 💡 **Insight:** As variáveis apresentam distribuições assimétricas positivas (média > mediana), indicando maior diversidade comportamental entre os pulsares catalogados.
+💡 **Insight:** As variáveis apresentam distribuições assimétricas positivas (média > mediana), indicando maior diversidade comportamental entre os pulsares catalogados.
 
-> 💡 **Insight:** em `AGE`, a enorme diferença entre média e mediana revela uma **forte assimetria à direita** (poucos pulsares extremamente velhos puxam a média para cima). O CV de 1570% confirma a alta heterogeneidade dos dados.
+💡 **Insight:** em `AGE`, a enorme diferença entre média e mediana revela uma **forte assimetria à direita** (poucos pulsares extremamente velhos puxam a média para cima). O CV de 1570% confirma a alta heterogeneidade dos dados.
 
 ---
 
 ### 4. Distribuições Individuais
 
-![Distribuição de associações](docs/figura1.png)
+<img src="docs/Histograma_DM_AGE.png" width="600">
 
 #### 📈 Medida de Dispersão (DM)
 - **Maior concentração:** 100 – 1000 pc/cm³
@@ -78,13 +73,13 @@
 - **Cauda à direita:** Estende-se até 10¹⁰ anos (pulsares muito velhos, rotação lenta)
 - **Cauda à esquerda:** 10³ – 10⁵ anos (pulsares jovens, rotação rápida)
 
-> 💡 **Insight:** A distribuição assimétrica da idade reforça a **existência de subpopulações** no catálogo.
+💡 **Insight:** A distribuição assimétrica da idade reforça a **existência de subpopulações** no catálogo.
 
 ---
 
 ### 5. Período de Rotação (P0) — Descoberta Principal
 
-![Distribuição de associações](docs/figura1.png)
+<img src="docs/Histograma_P0.png" width="400">
 <center>Tabela 5: Populações identificadas no histograma de P0</center>
 
 | População | Faixa de Período | Característica |
@@ -92,13 +87,13 @@
 | **Pulsares normais** | 0,5 – 5 segundos | Maioria da amostra, rotação lenta |
 | **Millissegundos** | 0,001 – 0,02 segundos | Minoria, rotação extremamente rápida |
 
-> 💡 **Insight:** Embora menos numerosos, os pulsares millissegundos evidenciam a existência de **duas populações com comportamentos rotacionais distintos**. A frequência decai progressivamente para períodos >5s, indicando que pulsares muito lentos são raros no catálogo.
+💡 **Insight:** Embora menos numerosos, os pulsares millissegundos evidenciam a existência de **duas populações com comportamentos rotacionais distintos**. A frequência decai progressivamente para períodos >5s, indicando que pulsares muito lentos são raros no catálogo.
 
 ---
 
 ### 6. Relação Período × Idade
 
-![Distribuição de associações](docs/figura1.png)
+<img src="docs/Dispercao_P0_AGE.png" width="400">
 <center>Tabela 6: Comportamento das populações no gráfico P0 × AGE</center>
 
 | População | Comportamento Observado |
@@ -106,7 +101,7 @@
 | **Pulsares normais** (P0 ≥ 0,02s) | Período **aumenta com a idade** — consistente com a perda gradual de energia rotacional |
 | **Millissegundos** (P0 < 0,02s) | **Extremamente velhos (10⁸–10¹⁰ anos), mas muito rápidos (0,001–0,02s)** — comportamento anômalo |
 
-> 💡 **Insight-chave:** A separação clara entre as duas populações confirma que **millissegundos evoluem de maneira completamente diferente** dos pulsares normais, consistente com a teoria de reaceleração por transferência de momento angular em sistemas binários (Lorimer, 2005).
+💡 **Insight-chave:** A separação clara entre as duas populações confirma que **millissegundos evoluem de maneira completamente diferente** dos pulsares normais, consistente com a teoria de reaceleração por transferência de momento angular em sistemas binários (Lorimer, 2005).
 
 ---
 
@@ -120,7 +115,6 @@
 | numpy | Computação numérica |
 | matplotlib/seaborn | Visualizações |
 | Google Colab | Ambiente de desenvolvimento em nuvem |
-
 
 ---
 
