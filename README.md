@@ -14,7 +14,7 @@
 | **CV da idade: 1570%** | Média de ~2 bilhões de anos vs mediana de ~10 milhões (poucos pulsares extremamente velhos puxam a média) |
 | **CV do período: 220%** | Período é 2x mais disperso que a medida de dispersão (maior diversidade comportamental) |
 | **Duas populações distintas** | Pulsares normais (0,5-5s) vs millissegundos (0,001-0,01s). Evidência clara no histograma |
-| **Viés observacional no DM** | Pulsares com alta medida de dispersão estão em regiões de difícil detecção (Viés observacional) |
+| **Viés observacional no DM** | Pulsares com alta medida de dispersão estão em regiões de difícil detecção |
 
 ### 🔗 [Open in Colab - ATNF Pulsar Catalogue Análise e Vizualizações](notebooks/Cópia_de_estatistica_eda_extracao_dados.ipynb)
 
