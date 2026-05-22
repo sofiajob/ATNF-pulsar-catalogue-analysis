@@ -1,5 +1,9 @@
 # 📈 ATNF Pulsar Catalogue - Análise Estatística Exploratória
 
+![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)
+![pandas](https://img.shields.io/badge/pandas-2.0+-red.svg)
+![License](https://img.shields.io/badge/License-MIT-green.svg)
+
 ## Sobre o Projeto
 
 ### Análise estatística exploratória do catálogo de pulsares do Australia Telescope National Facility, investigando distribuições e relações entre propriedades físicas desses objetos para a disciplina de Estatística Aplicada I
@@ -38,7 +42,7 @@
 
 ### 1. Classificação e Associação dos Pulsares
 
-<center><strong>Tabela 1: Distribuição da variável TYPE</strong></center>
+<center><strong>Distribuição da variável TYPE</strong></center>
 
 | Categoria | Freq. Absoluta | Freq. Relativa (%) |
 |:---------:|:--------------:|:------------------:|
@@ -52,7 +56,7 @@
 
 <br>
 
-<center><strong>Tabela 2: Distribuição da variável TEM_ASSOC</strong></center>
+<center><strong>Distribuição da variável TEM_ASSOC</strong></center>
 
 | Associação | Freq. Absoluta | Freq. Relativa (%) |
 |:----------:|:--------------:|:------------------:|
@@ -80,7 +84,7 @@
 
 ---
 
-### 4. Distribuições Individuais
+### 3. Distribuições Individuais
 
 <img src="docs/Histograma_DM_AGE.png" width="600">
 
@@ -99,7 +103,7 @@
 
 ---
 
-### 5. Período de Rotação (P0) — Descoberta Principal
+### 4. Período de Rotação (P0) — Descoberta Principal
 
 <img src="docs/Histograma_P0.png" width="400">
 
@@ -109,6 +113,19 @@
 | **Millissegundos** | 0,001 – 0,01 segundos | Minoria, rotação extremamente rápida |
 
 ### 💡 **Insight:** Embora menos numerosos, os pulsares millissegundos evidenciam a existência de **duas populações com comportamentos rotacionais distintos**. A frequência decai progressivamente para períodos >5s, indicando que pulsares muito lentos são raros no catálogo.
+
+---
+
+### 5. Período por Associação Catalogada
+
+<img src="docs/Boxplot_P0_ASSOC.png" width="500">
+
+| Grupo | Período | Dispersão |
+|:-----:|:-------:|:---------:|
+| **Com associação (S)** | Menor | Baixa |
+| **Sem associação (N)** | Maior | Alta |
+
+### 💡 Os dados indicam que pulsares com associação catalogada tendem a períodos mais curtos e distribuição mais homogênea em comparação aos sem associação.
 
 ---
 
