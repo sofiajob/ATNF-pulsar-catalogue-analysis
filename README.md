@@ -6,7 +6,9 @@
 
 ## Sobre o Projeto
 
-### Análise estatística exploratória do catálogo de pulsares do Australia Telescope National Facility, investigando distribuições e relações entre propriedades físicas desses objetos para a disciplina de Estatística Aplicada I
+> ### Análise estatística exploratória do catálogo de pulsares do Australia Telescope National Facility, investigando distribuições e relações entre propriedades físicas desses objetos para a disciplina de Estatística Aplicada I
+>
+> ### Extração dos dados via `psrqpy` → análise estatística com `pandas`/`numpy` → visualizações com `matplotlib`/`seaborn`.
 
 ## Principais Descobertas
 
@@ -147,7 +149,7 @@
 | Tecnologia | Finalidade |
 |------------|-------------|
 | Python | Linguagem principal |
-| psrqpy | Interface para ATNF Pulsar Catalogue |
+| psrqpy | Conexão com ATNF Pulsar Catalogue |
 | pandas | Manipulação de dados |
 | numpy | Computação numérica |
 | matplotlib/seaborn | Visualizações |
