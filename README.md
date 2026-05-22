@@ -18,6 +18,8 @@
 
 ### 🔗 [Open in Colab - ATNF Pulsar Catalogue Análise e Vizualizações](notebooks/Cópia_de_estatistica_eda_extracao_dados.ipynb)
 
+📓 **Notebook completo:** [Clique aqui para abrir](notebooks/Cópia_de_estatistica_eda_extracao_dados.ipynb)
+
 ---
 
 ## Variáveis Selecionadas
