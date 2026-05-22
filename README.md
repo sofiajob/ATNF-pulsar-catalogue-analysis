@@ -64,9 +64,9 @@
 | Sem associação conhecida (N) | 3.668 | 84.3% |
 | **Total** | **4.351** | **100%** |
 
-### 💡 **Insight:** As categorias HE, RRAT e NRAD representam **93.8%** dos pulsares classificados. AXP e XINS são tipos raros ou de detecção recente.
+### 💡 **Destaque:** As categorias HE, RRAT e NRAD representam **93.8%** dos pulsares classificados. AXP e XINS são tipos raros ou de detecção recente.
 
-### 💡 **Insight:** A predominância de pulsares sem associação conhecida (84.3%) reflete o desafio de rastrear a origem desses objetos antigos, cujas evidências de formação frequentemente se dissipam.
+### 💡 **Destaque:** A predominância de pulsares sem associação conhecida (84.3%) reflete o desafio de rastrear a origem desses objetos antigos, cujas evidências de formação frequentemente se dissipam.
 
 ---
 
@@ -78,9 +78,9 @@
 | **DM** (dispersão) | 351 pc/cm³ | 163 pc/cm³ | 98% |
 | **AGE** (idade) | ~2 bi anos | ~10 mi anos | 1570% |
 
-### 💡 **Insight:** As variáveis apresentam distribuições assimétricas positivas (média > mediana), indicando maior diversidade comportamental entre os pulsares catalogados.
+### 💡 **Destaque:** As variáveis apresentam distribuições assimétricas positivas (média > mediana), indicando maior diversidade comportamental entre os pulsares catalogados.
 
-### 💡 **Insight:** em `AGE`, a enorme diferença entre média e mediana revela uma **forte assimetria à direita** (poucos pulsares extremamente velhos puxam a média para cima). O CV de 1570% confirma a alta heterogeneidade dos dados.
+### 💡 **Destaque:** em `AGE`, a enorme diferença entre média e mediana revela uma **forte assimetria à direita** (poucos pulsares extremamente velhos puxam a média para cima). O CV de 1570% confirma a alta heterogeneidade dos dados.
 
 ---
 
@@ -98,8 +98,8 @@
 - **Cauda à direita:** Estende-se até 10¹⁰ anos (pulsares muito velhos, rotação lenta)
 - **Cauda à esquerda:** 10³ – 10⁵ anos (pulsares jovens, rotação rápida)
 
-### 💡 **Insight:** A distribuição de DM é reflexo de um **viés observacional** presente no catálogo.
-### 💡 **Insight:** A distribuição assimétrica da idade reforça a **existência de subpopulações** no catálogo.
+### 💡 **Destaque:** A distribuição de DM é reflexo de um **viés observacional** presente no catálogo.
+### 💡 **Destaque:** A distribuição assimétrica da idade reforça a **existência de subpopulações** no catálogo.
 
 ---
 
@@ -112,7 +112,7 @@
 | **Pulsares normais** | 0,5 – 5 segundos | Maioria da amostra, rotação lenta |
 | **Millissegundos** | 0,001 – 0,01 segundos | Minoria, rotação extremamente rápida |
 
-### 💡 **Insight:** Embora menos numerosos, os pulsares millissegundos evidenciam a existência de **duas populações com comportamentos rotacionais distintos**. A frequência decai progressivamente para períodos >5s, indicando que pulsares muito lentos são raros no catálogo.
+### 💡 **Destaque:** Embora menos numerosos, os pulsares millissegundos evidenciam a existência de **duas populações com comportamentos rotacionais distintos**. A frequência decai progressivamente para períodos >5s, indicando que pulsares muito lentos são raros no catálogo.
 
 ---
 
@@ -125,7 +125,7 @@
 | **Com associação (S)** | Menor | Baixa |
 | **Sem associação (N)** | Maior | Alta |
 
-### 💡 Os dados indicam que pulsares com associação catalogada tendem a períodos mais curtos e distribuição mais homogênea em comparação aos sem associação.
+### 💡 **Destaque:** Os dados indicam que pulsares com associação catalogada tendem a períodos mais curtos e distribuição mais homogênea em comparação aos sem associação.
 
 ---
 
@@ -138,7 +138,7 @@
 | **Pulsares normais** (P0 ≥ 0,02s) | Período **aumenta com a idade** — consistente com a perda gradual de energia rotacional |
 | **Millissegundos** (P0 < 0,02s) | **Extremamente velhos (10⁸–10¹⁰ anos), mas muito rápidos (0,001–0,02s)** — comportamento anômalo |
 
-### 💡 **Insight:** A separação clara entre as duas populações confirma que **millissegundos evoluem de maneira completamente diferente** dos pulsares normais, consistente com a teoria de reaceleração por transferência de momento angular em sistemas binários (Lorimer, 2005).
+### 💡 **Destaque:** A separação clara entre as duas populações confirma que **millissegundos evoluem de maneira completamente diferente** dos pulsares normais, consistente com a teoria de reaceleração por transferência de momento angular em sistemas binários (Lorimer, 2005).
 
 ---
 
