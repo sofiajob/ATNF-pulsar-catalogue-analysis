@@ -138,7 +138,7 @@
 | **Pulsares normais** (P0 ≥ 0,02s) | Período **aumenta com a idade** — consistente com a perda gradual de energia rotacional |
 | **Millissegundos** (P0 < 0,02s) | **Extremamente velhos (10⁸–10¹⁰ anos), mas muito rápidos (0,001–0,02s)** — comportamento anômalo |
 
-### 💡 **Destaque:** A separação clara entre as duas populações confirma que **millissegundos evoluem de maneira completamente diferente** dos pulsares normais, consistente com a teoria de reaceleração por transferência de momento angular em sistemas binários (Lorimer, 2005).
+### 💡 **Destaque:** A separação clara entre as duas populações confirma que **millissegundos evoluem de maneira completamente diferente** dos pulsares normais.
 
 ---
 
