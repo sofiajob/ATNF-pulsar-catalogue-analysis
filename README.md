@@ -22,7 +22,7 @@
 | **Duas populações distintas** | Pulsares normais (0,5-5s) vs millissegundos (0,001-0,01s). Evidência clara no histograma |
 | **Viés observacional no DM** | Pulsares com alta medida de dispersão estão em regiões de difícil detecção |
 
-### 🔗 **Notebook completo:** [Clique aqui para abrir - ATNF Pulsar Catalogue Análise e Vizualizações](notebooks/Cópia_de_estatistica_eda_extracao_dados.ipynb)
+## 🔗 **Notebook completo:** [Clique aqui para abrir - ATNF Pulsar Catalogue Análise e Vizualizações](notebooks/Cópia_de_estatistica_eda_extracao_dados.ipynb)
 
 ---
 
