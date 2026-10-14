@@ -1,168 +1,203 @@
-# 📈 ATNF Pulsar Catalogue - Análise Estatística Exploratória
+# ATNF Pulsar Catalogue - Análise Estatística Exploratória
+### Análise de dados astronômicos com Python, Pandas e NumPy
 
-![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)
-![pandas](https://img.shields.io/badge/pandas-2.0+-red.svg)
-![License](https://img.shields.io/badge/License-MIT-green.svg)
+Análise exploratória do catálogo de pulsares do **Australia Telescope National Facility (ATNF)**, com foco na distribuição e nas relações entre propriedades catalogadas desses objetos.
 
-## Sobre o Projeto
+O fluxo de trabalho utiliza `psrqpy` para acessar o catálogo, `pandas` e `numpy` para preparar e resumir os dados e `matplotlib`/`seaborn` para visualização.
 
-> ### Análise estatística exploratória do catálogo de pulsares do Australia Telescope National Facility, investigando distribuições e relações entre propriedades físicas desses objetos para a disciplina de Estatística Aplicada I
->
-> ### Extração dos dados via `psrqpy` → análise estatística com `pandas`/`numpy` → visualizações com `matplotlib`/`seaborn`.
+## Acessos rápidos
 
-## Principais Descobertas
+- [Notebook no GitHub](https://github.com/sofiajob/ATNF-pulsar-catalogue-analysis/blob/main/notebooks/C%C3%B3pia_de_estatistica_eda_extracao_dados.ipynb)
+- [Abrir notebook no Google Colab](https://colab.research.google.com/github/sofiajob/ATNF-pulsar-catalogue-analysis/blob/main/notebooks/C%C3%B3pia_de_estatistica_eda_extracao_dados.ipynb)
+- [Catálogo oficial ATNF](https://www.atnf.csiro.au/research/pulsar/psrcat/)
 
-| Descoberta | Explicação |
-|:-----------|:--------|
-| **Millissegundos: velhos mas rápidos** | Período de 0,001-0,01s com bilhões de anos de idade |
-| **Pulsares Normais: desaceleram** | tendem a desacelerar com o aumento da idade |
-| **84,3% sem associação catalogada** | Apenas 15,7% dos pulsares têm origem conhecida (grande potencial para novas descobertas) |
-| **CV da idade: 1570%** | Média de ~2 bilhões de anos vs mediana de ~10 milhões (poucos pulsares extremamente velhos puxam a média) |
-| **CV do período: 220%** | Período é 2x mais disperso que a medida de dispersão (maior diversidade comportamental) |
-| **Duas populações distintas** | Pulsares normais (0,5-5s) vs millissegundos (0,001-0,01s). Evidência clara no histograma |
-| **Viés observacional no DM** | Pulsares com alta medida de dispersão estão em regiões de difícil detecção |
+## Objetivos
 
-## 🔗 **Notebook completo:** [Clique aqui para abrir - ATNF Pulsar Catalogue Análise e Vizualizações](notebooks/Cópia_de_estatistica_eda_extracao_dados.ipynb)
+- Explorar distribuições de variáveis quantitativas do catálogo.
+- Comparar média, mediana e coeficiente de variação.
+- Investigar diferenças no período de rotação entre grupos de pulsares.
+- Examinar associações catalogadas e relações entre período, idade característica e medida de dispersão.
+- Discutir limites da análise descritiva e possíveis efeitos da seleção observacional.
 
----
+## Dados e variáveis
 
-## Variáveis Selecionadas
-  
+Os dados são acessados por meio da biblioteca `psrqpy`. A análise utiliza as variáveis abaixo, incluindo uma variável derivada para simplificar a informação de associação.
+
 | Variável | Descrição |
-|------|-----------|
-| `TYPE` | Classificação quanto ao tipo de pulsar (normal, millisecond, AXP, etc.) |
-| `TEM_ASSOC` | Associação a remanescentes de supernova ou aglomerados catalogada |
-| `P0` | Período de rotação (segundos) |
-| `DM` | Medida de dispersão (quantidade de elétrons livres entre a Terra e o pulsar em pc/cm³) |
-| `AGE` | Idade característica (anos) |
+|---|---|
+| `TYPE` | Tipo ou classificação registrada no catálogo, quando disponível. |
+| `TEM_ASSOC` | Indicador derivado de `ASSOC`, simplificado para indicar se existe uma associação catalogada. |
+| `P0` | Período de rotação, em segundos. |
+| `DM` | Medida de dispersão, quantidade de elétrons livres entre a Terra e o pulsar em pc/cm³. |
+| `AGE` | Idade característica, em anos. |
 
-> Nota: `TEM_ASSOC` é derivada da váriavel original `ASSOC`, que foi simplificada para uma classificação binária (Sim/Não), indicando apenas se o pulsar possui qualquer tipo de registro de associação catalogado.
+> `TEM_ASSOC` é derivada da variável original `ASSOC`, que foi simplificada para uma classificação binária (Sim/Não), indicando apenas se o pulsar possui qualquer tipo de registro de associação catalogado. Da mesma forma, a idade característica `AGE` não é necessariamente uma medição direta da idade real do objeto.
 
----
+## Principais resultados exploratórios
 
-## Discussão das Principais Descobertas da Análise
+| Resultado | Evidência observada | Interpretação cautelosa |
+|---|---|---|
+| Alta proporção sem associação catalogada | 84,3% dos registros analisados não têm associação registrada na variável derivada. | A associação não está catalogada para a maioria da amostra. |
+| Grande variabilidade da idade característica | Média de aproximadamente 2 bilhões de anos, mediana de cerca de 10 milhões de anos e CV reportado de 1570%. | A diferença entre média e mediana indica forte assimetria à direita e influência de valores elevados. |
+| Variabilidade do período de rotação | Média de 0,85 s, mediana de 0,37 s e CV de 220%. | A distribuição é assimétrica e abrange períodos muito diferentes. |
+| Distribuição de DM | Maior concentração observada na faixa de 100–1000 pc/cm³. | A forma da distribuição pode refletir tanto propriedades dos objetos quanto seleção e limites observacionais. |
+| Grupos com períodos distintos | A análise exploratória distingue pulsares com períodos de 0,5–5 s e objetos de milissegundos na faixa aproximada de 0,001–0,01 s. | O histograma sugere grupos com períodos diferentes, mas a separação visual, por si só, não constitui um teste formal de populações distintas. |
 
-### 1. Classificação e Associação dos Pulsares
+## 1. Classificação e associação dos pulsares
 
-<center><strong>Distribuição da variável TYPE</strong></center>
+### Distribuição de `TYPE`
 
-| Categoria | Freq. Absoluta | Freq. Relativa (%) |
-|:---------:|:--------------:|:------------------:|
-| HE | 253 | 41.9% |
-| RRAT | 220 | 36.5% |
-| NRAD | 93 | 15.4% |
-| AXP | 24 | 4.0% |
-| XINS | 5 | 0.8% |
-| Sem identificação | 8 | 1.3% |
-| **Total de classificados** | **603** | **13.9% da amostra** |
+| Categoria | Frequência absoluta | Frequência relativa |
+|---|---:|---:|
+| HE | 253 | 41,9% |
+| RRAT | 220 | 36,5% |
+| NRAD | 93 | 15,4% |
+| AXP | 24 | 4,0% |
+| XINS | 5 | 0,8% |
+| Sem identificação | 8 | 1,3% |
+| **Total classificado** | **603** | **13,9% da amostra** |
 
-<br>
+As categorias HE, RRAT e NRAD representam **93.8%** dos registros classificados nessa variável. AXP e XINS são tipos com detecção recente ou rara.
 
-<center><strong>Distribuição da variável TEM_ASSOC</strong></center>
+### Distribuição de `TEM_ASSOC`
 
-| Associação | Freq. Absoluta | Freq. Relativa (%) |
-|:----------:|:--------------:|:------------------:|
-| Com associação catalogada (S) | 683 | 15.7% |
-| Sem associação conhecida (N) | 3.668 | 84.3% |
+| Associação catalogada | Frequência absoluta | Frequência relativa |
+|---|---:|---:|
+| Com associação catalogada (`S`) | 683 | 15,7% |
+| Sem associação catalogada (`N`) | 3.668 | 84,3% |
 | **Total** | **4.351** | **100%** |
 
-### 💡 **Destaque:** As categorias HE, RRAT e NRAD representam **93.8%** dos pulsares classificados. AXP e XINS são tipos raros ou de detecção recente.
+A predominância de pulsares sem associação conhecida (84.3%) reflete o desafio de rastrear a origem desses objetos antigos, cujas evidências de formação frequentemente se dissipam.
 
-### 💡 **Destaque:** A predominância de pulsares sem associação conhecida (84.3%) reflete o desafio de rastrear a origem desses objetos antigos, cujas evidências de formação frequentemente se dissipam.
+## 2. Distribuição e medidas de resumo
 
----
+| Variável | Média | Mediana | Coeficiente de variação (CV) |
+|---|---:|---:|---:|
+| `P0` — período | 0,85 s | 0,37 s | 220% |
+| `DM` — medida de dispersão | 351 pc/cm³ | 163 pc/cm³ | 98% |
+| `AGE` — idade característica | Aproximadamente 2 bilhões de anos | Aproximadamente 10 milhões de anos | 1570% |
 
-### 2. Distribuição e Medidas de Resumo
+Nas três variáveis, a média é superior à mediana, o que é compatível com assimetria à direita. A diferença é particularmente expressiva em `AGE`, na qual poucos valores muito elevados podem influenciar fortemente a média. O CV de 1570% confirma a alta heterogeneidade dos dados.
 
-| Variável | Média | Mediana | CV |
-|:--------:|:-----:|:-------:|:---:|
-| **P0** (período) | 0,85s | 0,37s | 220% |
-| **DM** (dispersão) | 351 pc/cm³ | 163 pc/cm³ | 98% |
-| **AGE** (idade) | ~2 bi anos | ~10 mi anos | 1570% |
+### Como interpretar o CV de 1570%?
 
-### 💡 **Destaque:** As variáveis apresentam distribuições assimétricas positivas (média > mediana), indicando maior diversidade comportamental entre os pulsares catalogados.
+O coeficiente de variação é calculado pela razão entre o desvio-padrão e a média, multiplicada por 100:
 
-### 💡 **Destaque:** em `AGE`, a enorme diferença entre média e mediana revela uma **forte assimetria à direita** (poucos pulsares extremamente velhos puxam a média para cima). O CV de 1570% confirma a alta heterogeneidade dos dados.
+\[
+CV = \frac{\text{desvio-padrão}}{\text{média}} \times 100\%
+\]
 
----
+Um CV de **1570%** significa que o desvio-padrão corresponde a aproximadamente **15,7 vezes a média**. É uma medida de dispersão relativa extremamente elevada. Como a distribuição da idade característica é fortemente assimétrica, o CV deve ser interpretado com cautela e em conjunto com a mediana, os quantis e a visualização da distribuição.
 
-### 3. Distribuições Individuais
+O CV não comprova, por si só, a existência de subpopulações físicas. Para investigar grupos distintos, seriam necessárias análises adicionais e critérios explícitos de classificação.
+
+## 3. Distribuições individuais
 
 <img src="docs/Histograma_DM_AGE.png" width="600">
 
-#### Medida de Dispersão (DM)
-- **Maior concentração:** 100 – 1000 pc/cm³
-- **Frequência decrescente** para valores mais altos
-- **Viés observacional:** Pulsares com DM alto estão em regiões de alta densidade ou grandes distâncias, o que dificulta sua detecção
+### Medida de dispersão (`DM`)
 
-#### Idade Característica (AGE)
-- **Pico principal:** 10⁶ – 10⁷ anos (1 a 10 milhões de anos)
-- **Cauda à direita:** Estende-se até 10¹⁰ anos (pulsares muito velhos, rotação lenta)
-- **Cauda à esquerda:** 10³ – 10⁵ anos (pulsares jovens, rotação rápida)
+- A maior concentração observada no recorte está entre **100 e 1000 pc/cm³**.
+- A frequência diminui em faixas mais altas.
+- A distribuição deve ser interpretada considerando distância, localização no meio interestelar, detectabilidade e critérios de inclusão no catálogo. Exemplo: Pulsares com DM alto estão em regiões de alta densidade ou grandes distâncias, o que dificulta sua detecção
 
-### 💡 **Destaque:** A distribuição de DM é reflexo de um **viés observacional** presente no catálogo.
-### 💡 **Destaque:** A distribuição assimétrica da idade reforça a **existência de subpopulações** no catálogo.
+**Interpretação:** a distribuição observada não depende apenas das propriedades físicas dos pulsares. Limitações de detecção e seleção da amostra podem influenciar quais objetos são encontrados e catalogados. O histograma, isoladamente, não permite quantificar um viés observacional nem identificar sua causa.
 
----
+### Idade característica (`AGE`)
 
-### 4. Período de Rotação (P0) — Descoberta Principal
+- Pico principal observado na faixa de **10⁶–10⁷ anos** (1 a 10 milhões de anos).
+- Cauda à direita que se estende até aproximadamente **10¹⁰ anos** (pulsares muito velhos, rotação lenta).
+- Valores mais baixos aparecem em faixas próximas de **10³–10⁵ anos** (pulsares jovens, rotação rápida).
+
+**Interpretação:** a diferença entre média e mediana mostra que a distribuição é fortemente assimétrica. A presença de valores extremos deve ser considerada ao resumir a variável; a idade característica também não deve ser confundida automaticamente com a idade real de cada pulsar.
+
+## 4. Período de rotação (`P0`)
 
 <img src="docs/Histograma_P0.png" width="400">
 
-| População | Faixa de Período | Característica |
-|:---------:|:----------------:|:--------------:|
-| **Pulsares normais** | 0,5 – 5 segundos | Maioria da amostra, rotação lenta |
-| **Millissegundos** | 0,001 – 0,01 segundos | Minoria, rotação extremamente rápida |
+| Grupo exploratório | Faixa de período | Característica geral |
+|---|---|---|
+| Pulsares com períodos mais longos | 0,5–5 s | Períodos relativamente longos em comparação com os pulsares de milissegundos. |
+| Pulsares de milissegundos | 0,001–0,01 s | Períodos extremamente curtos. |
 
-### 💡 **Destaque:** Embora menos numerosos, os pulsares millissegundos evidenciam a existência de **duas populações com comportamentos rotacionais distintos**. A frequência decai progressivamente para períodos >5s, indicando que pulsares muito lentos são raros no catálogo.
+A distribuição mostra objetos com períodos muito curtos e outros com períodos mais longos. A diferença entre essas faixas é consistente com a distinção descritiva entre pulsares de milissegundos e outros grupos.
 
----
+A análise de um histograma, entretanto, não basta para afirmar formalmente que há exatamente duas populações estatísticas. A quantidade de grupos e seus limites dependem dos critérios adotados e de análises adicionais.
 
-### 5. Período por Associação Catalogada
+## 5. Período por associação catalogada
 
 <img src="docs/Boxplot_P0_ASSOC.png" width="500">
 
-| Grupo | Período | Dispersão |
-|:-----:|:-------:|:---------:|
-| **Com associação (S)** | Menor | Baixa |
-| **Sem associação (N)** | Maior | Alta |
+A comparação exploratória entre os grupos apresentou o seguinte padrão:
 
-### 💡 **Destaque:** Os dados indicam que pulsares com associação catalogada tendem a períodos mais curtos e distribuição mais homogênea em comparação aos sem associação.
+| Grupo | Padrão observado no resumo exploratório |
+|---|---|
+| Com associação catalogada (`S`) | Períodos relativamente menores e menor dispersão. |
+| Sem associação catalogada (`N`) | Períodos relativamente maiores e maior dispersão. |
 
----
+Os dados indicam que pulsares com associação catalogada tendem a períodos mais curtos e distribuição mais homogênea em comparação aos sem associação. Entretanto, esse padrão descreve a amostra analisada e não demonstra que possuir uma associação catalogada cause diferenças no período. Os grupos podem diferir em outros aspectos, e a disponibilidade de associações pode estar relacionada a fatores observacionais e à composição da amostra.
 
-### 6. Relação Período × Idade
+## 6. Relação entre período e idade característica
 
 <img src="docs/Dispercao_P0_AGE.png" width="400">
 
-| População | Comportamento Observado |
-|:---------:|:-----------------------:|
-| **Pulsares normais** (P0 ≥ 0,02s) | Período **aumenta com a idade** — consistente com a perda gradual de energia rotacional |
-| **Millissegundos** (P0 < 0,02s) | **Extremamente velhos (10⁸–10¹⁰ anos), mas muito rápidos (0,001–0,02s)** — comportamento anômalo |
+| Grupo exploratório | Comportamento observado |
+|---|---|
+| Pulsares com `P0 ≥ 0,02 s` | A análise sugere aumento do período em função da idade característica em parte dos registros, compatível com o quadro geral de desaceleração rotacional. |
+| Pulsares com `P0 < 0,02 s` | Inclui objetos de período muito curto e idade característica elevada, aproximadamente entre 10⁸ e 10¹⁰ anos em parte da amostra. |
 
-### 💡 **Destaque:** A separação clara entre as duas populações confirma que **millissegundos evoluem de maneira completamente diferente** dos pulsares normais.
+Os pulsares de milissegundos podem apresentar períodos muito curtos mesmo com idades características elevadas. Esse padrão não deve ser chamado de “anômalo” apenas por diferir do comportamento de outros grupos: a interpretação física exige considerar os processos de evolução desses objetos e as limitações da idade característica.
 
----
+## Glossário
 
-## Tecnologias e Ferramentas Utilizadas
+| Termo | Significado |
+|---|---|
+| **Pulsar** | Estrela de nêutrons que emite feixes de radiação observados como pulsos devido à rotação e à geometria do sistema. |
+| **Período de rotação (`P0`)** | Tempo necessário para uma rotação, medido em segundos. |
+| **Medida de dispersão (`DM`)** | Quantidade integrada de elétrons livres ao longo da linha de visada, expressa em pc/cm³; afeta a propagação dos sinais de rádio. |
+| **Idade característica (`AGE`)** | Estimativa derivada de propriedades de rotação, que não equivale necessariamente à idade real do objeto. |
+| **Associação catalogada** | Relação registrada no catálogo entre um pulsar e outro objeto ou estrutura, conforme a classificação consultada. |
+| **Média** | Soma dos valores dividida pelo número de observações; pode ser influenciada por valores extremos. |
+| **Mediana** | Valor central da distribuição ordenada; é menos sensível a valores extremos do que a média. |
+| **Coeficiente de variação (CV)** | Desvio-padrão dividido pela média e expresso em porcentagem; mede dispersão relativa e requer cautela em distribuições assimétricas. |
+| **Viés observacional** | Diferença sistemática entre os objetos detectados e a população que se pretende estudar, causada por limites ou condições de observação. |
 
-| Tecnologia | Finalidade |
-|------------|-------------|
+## Limitações
+
+- O catálogo é uma fonte observacional: a amostra disponível depende de detecção, acompanhamento, medição e atualização dos registros.
+- Valores ausentes ou não registrados podem afetar a quantidade de observações utilizada em cada análise.
+- A variável `TEM_ASSOC` simplifica a informação de associação e não representa uma classificação definitiva da origem física.
+- Média, mediana e CV resumem aspectos diferentes da distribuição. Em variáveis fortemente assimétricas, é importante considerar quantis e gráficos.
+- As relações observadas são exploratórias. Correlação ou diferença entre grupos não estabelece causalidade.
+- Resultados podem variar conforme a versão do catálogo e os critérios de filtragem usados para extrair os dados.
+
+## Tecnologias e ferramentas
+
+| Tecnologia | Uso |
+|---|---|
 | Python | Linguagem principal |
-| psrqpy | Conexão com ATNF Pulsar Catalogue |
-| pandas | Manipulação de dados |
-| numpy | Computação numérica |
-| matplotlib/seaborn | Visualizações |
+| `psrqpy` | Acesso ao catálogo ATNF |
+| `pandas` | Manipulação e análise tabular |
+| `numpy` | Cálculos numéricos |
+| `matplotlib` e `seaborn` | Visualização de dados |
 | Google Colab | Ambiente de desenvolvimento em nuvem |
 
----
+## Como reproduzir
 
-## Autoria 
-Sofia Fernandes Job Junqueira
+1. Abra o [notebook no Google Colab](https://colab.research.google.com/github/sofiajob/ATNF-pulsar-catalogue-analysis/blob/main/notebooks/C%C3%B3pia_de_estatistica_eda_extracao_dados.ipynb).
+2. Execute as células na ordem apresentada.
+3. Caso seja solicitado, instale as dependências indicadas no notebook.
+4. Consulte a documentação do [`psrqpy`](https://psrqpy.readthedocs.io/) e o [catálogo oficial ATNF](https://www.atnf.csiro.au/research/pulsar/psrcat/) para informações sobre os dados.
+
+Os resultados podem variar de acordo com a versão do catálogo consultada e os filtros aplicados.
 
 ## Referências
 - [ATNF Pulsar Catalogue](https://www.atnf.csiro.au/research/pulsar/psrcat) - Base de dados oficial
-
 - **Manchester, R. N.** et al. (2005) - The Australia Telescope National Facility Pulsar Catalogue. *The Astronomical Journal*, 129(4), 1993. DOI: [10.1086/428488](https://doi.org/10.1086/428488)
-  
 - **Pitkin, M.** (2018) - psrqpy: Python interface for ATNF catalogue. *JOSS*, 3(22), 538. DOI: [10.21105/joss.00538](https://doi.org/10.21105/joss.00538) | [GitHub](https://github.com/mattpitkin/psrqpy)
+
+## Autoria
+
+**Sofia Fernandes Job Junqueira**
+
+Projeto independente de análise exploratória, estatística aplicada e visualização de dados científicos.
