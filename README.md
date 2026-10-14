@@ -5,6 +5,8 @@ Análise exploratória do catálogo de pulsares do **Australia Telescope Nationa
 
 O fluxo de trabalho utiliza `psrqpy` para acessar o catálogo, `pandas` e `numpy` para preparar e resumir os dados e `matplotlib`/`seaborn` para visualização.
 
+Foi Utilizada a **versão 2.7.0 do catálogo**, atualizada em outubro de 2025, contendo 4.351 pulsares catalogados
+
 ## Acessos rápidos
 
 - [Notebook no GitHub](https://github.com/sofiajob/ATNF-pulsar-catalogue-analysis/blob/main/notebooks/C%C3%B3pia_de_estatistica_eda_extracao_dados.ipynb)
