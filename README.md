@@ -85,9 +85,7 @@ Nas três variáveis, a média é superior à mediana, o que é compatível com 
 
 O coeficiente de variação é calculado pela razão entre o desvio-padrão e a média, multiplicada por 100:
 
-\[
-CV = \frac{\text{desvio-padrão}}{\text{média}} \times 100\%
-\]
+**CV (%) = (desvio-padrão / média) × 100**
 
 Um CV de **1570%** significa que o desvio-padrão corresponde a aproximadamente **15,7 vezes a média**. É uma medida de dispersão relativa extremamente elevada. Como a distribuição da idade característica é fortemente assimétrica, o CV deve ser interpretado com cautela e em conjunto com a mediana, os quantis e a visualização da distribuição.
 
