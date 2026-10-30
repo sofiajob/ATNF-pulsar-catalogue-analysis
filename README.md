@@ -99,8 +99,7 @@ The CV does not, by itself, demonstrate the existence of physical subpopulations
 
 - The highest concentration observed in the dataset falls within the **100–1000 pc/cm³** range.
 - Frequency decreases at higher ranges.
-- The distribution should be interpreted considering distance, location in the interstellar medium, detectability, and catalogue inclusion criteria. For example, pulsars with high DM values are located in high-density regions or at greater distances, which makes their detection more difficult.
-
+- The distribution should be interpreted considering distance, location in the interstellar medium, detectability, and catalogue inclusion criteria. For example, high DM values may be associated with greater distances or denser regions of the interstellar medium. In some cases, these conditions can affect signal propagation and make pulsar detection more challenging.
 **Interpretation:** The observed distribution does not depend solely on the physical properties of pulsars. Detection limitations and sample selection may influence which objects are discovered and catalogued. The histogram alone cannot quantify an observational bias or identify its cause.
 
 ### Characteristic Age (`AGE`)
