@@ -1,203 +1,202 @@
-# ATNF Pulsar Catalogue - Análise Estatística Exploratória
-### Análise de dados astronômicos com Python, Pandas e NumPy
+# ATNF Pulsar Catalogue - Exploratory Statistical Analysis
+### Astronomical Data Analysis with Python, Pandas, and NumPy
 
-Análise exploratória do catálogo de pulsares do **Australia Telescope National Facility (ATNF)**, com foco na distribuição e nas relações entre propriedades catalogadas desses objetos.
+Exploratory analysis of the **Australia Telescope National Facility (ATNF) Pulsar Catalogue**, focusing on the distribution and relationships between the catalogued properties of these objects.
 
-O fluxo de trabalho utiliza `psrqpy` para acessar o catálogo, `pandas` e `numpy` para preparar e resumir os dados e `matplotlib`/`seaborn` para visualização.
+The workflow uses `psrqpy` to access the catalogue, `pandas` and `numpy` to prepare and summarize the data, and `matplotlib`/`seaborn` for visualization.
 
-Foi Utilizada a **versão 2.7.0 do catálogo**, atualizada em outubro de 2025, contendo 4.351 pulsares catalogados
+The analysis uses **catalogue version 2.7.0**, updated in October 2025, containing 4,351 catalogued pulsars.
 
-## Acessos rápidos
+## Quick Access
 
-- [Notebook no GitHub](https://github.com/sofiajob/ATNF-pulsar-catalogue-analysis/blob/main/notebooks/C%C3%B3pia_de_estatistica_eda_extracao_dados.ipynb)
-- [Abrir notebook no Google Colab](https://colab.research.google.com/github/sofiajob/ATNF-pulsar-catalogue-analysis/blob/main/notebooks/C%C3%B3pia_de_estatistica_eda_extracao_dados.ipynb)
-- [Catálogo oficial ATNF](https://www.atnf.csiro.au/research/pulsar/psrcat/)
+- [Notebook on GitHub](https://github.com/sofiajob/ATNF-pulsar-catalogue-analysis/blob/main/notebooks/C%C3%B3pia_de_estatistica_eda_extracao_dados.ipynb)
+- [Open Notebook in Google Colab](https://colab.research.google.com/github/sofiajob/ATNF-pulsar-catalogue-analysis/blob/main/notebooks/C%C3%B3pia_de_estatistica_eda_extracao_dados.ipynb)
+- [Official ATNF Catalogue](https://www.atnf.csiro.au/research/pulsar/psrcat/)
 
-## Objetivos
+## Objectives
 
-- Explorar distribuições de variáveis quantitativas do catálogo.
-- Comparar média, mediana e coeficiente de variação.
-- Investigar diferenças no período de rotação entre grupos de pulsares.
-- Examinar associações catalogadas e relações entre período, idade característica e medida de dispersão.
-- Discutir limites da análise descritiva e possíveis efeitos da seleção observacional.
+- Explore the distributions of quantitative catalogue variables.
+- Compare the mean, median, and coefficient of variation.
+- Investigate differences in rotation periods across pulsar groups.
+- Examine catalogued associations and relationships between period, characteristic age, and dispersion measure.
+- Discuss the limitations of descriptive analysis and possible effects of observational selection.
 
-## Dados e variáveis
+## Data and Variables
 
-Os dados são acessados por meio da biblioteca `psrqpy`. A análise utiliza as variáveis abaixo, incluindo uma variável derivada para simplificar a informação de associação.
+The data are accessed through the `psrqpy` library. The analysis uses the variables listed below, including a derived variable created to simplify association information.
 
-| Variável | Descrição |
+| Variable | Description |
 |---|---|
-| `TYPE` | Tipo ou classificação registrada no catálogo, quando disponível. |
-| `TEM_ASSOC` | Indicador derivado de `ASSOC`, simplificado para indicar se existe uma associação catalogada. |
-| `P0` | Período de rotação, em segundos. |
-| `DM` | Medida de dispersão, quantidade de elétrons livres entre a Terra e o pulsar em pc/cm³. |
-| `AGE` | Idade característica, em anos. |
+| `TYPE` | Type or classification recorded in the catalogue, when available. |
+| `TEM_ASSOC` | Derived indicator based on `ASSOC`, simplified to indicate whether a catalogued association exists. |
+| `P0` | Rotation period, in seconds. |
+| `DM` | Dispersion measure, representing the column density of free electrons between Earth and the pulsar, in pc/cm³. |
+| `AGE` | Characteristic age, in years. |
 
-> `TEM_ASSOC` é derivada da variável original `ASSOC`, que foi simplificada para uma classificação binária (Sim/Não), indicando apenas se o pulsar possui qualquer tipo de registro de associação catalogado. Da mesma forma, a idade característica `AGE` não é necessariamente uma medição direta da idade real do objeto.
+> `TEM_ASSOC` is derived from the original `ASSOC` variable, which was simplified into a binary classification (Yes/No), indicating only whether the pulsar has any type of catalogued association record. Similarly, the characteristic age `AGE` is not necessarily a direct measurement of the object's actual age.
 
-## Principais resultados exploratórios
+## Main Exploratory Findings
 
-| Resultado | Evidência observada | Interpretação cautelosa |
+| Finding | Observed Evidence | Cautious Interpretation |
 |---|---|---|
-| Alta proporção sem associação catalogada | 84,3% dos registros analisados não têm associação registrada na variável derivada. | A associação não está catalogada para a maioria da amostra. |
-| Grande variabilidade da idade característica | Média de aproximadamente 2 bilhões de anos, mediana de cerca de 10 milhões de anos e CV reportado de 1570%. | A diferença entre média e mediana indica forte assimetria à direita e influência de valores elevados. |
-| Variabilidade do período de rotação | Média de 0,85 s, mediana de 0,37 s e CV de 220%. | A distribuição é assimétrica e abrange períodos muito diferentes. |
-| Distribuição de DM | Maior concentração observada na faixa de 100–1000 pc/cm³. | A forma da distribuição pode refletir tanto propriedades dos objetos quanto seleção e limites observacionais. |
-| Grupos com períodos distintos | A análise exploratória distingue pulsares com períodos de 0,5–5 s e objetos de milissegundos na faixa aproximada de 0,001–0,01 s. | O histograma sugere grupos com períodos diferentes, mas a separação visual, por si só, não constitui um teste formal de populações distintas. |
+| High proportion without a catalogued association | 84.3% of the analyzed records have no association recorded in the derived variable. | An association is not catalogued for most of the sample. |
+| High variability in characteristic age | Mean of approximately 2 billion years, median of around 10 million years, and reported CV of 1570%. | The difference between the mean and median indicates strong right skewness and the influence of high values. |
+| Variability in rotation period | Mean of 0.85 s, median of 0.37 s, and CV of 220%. | The distribution is asymmetric and covers a wide range of periods. |
+| Distribution of DM | The highest observed concentration falls within the 100–1000 pc/cm³ range. | The distribution may reflect both the properties of the objects and observational selection and detection limits. |
+| Groups with different periods | The exploratory analysis distinguishes pulsars with periods of 0.5–5 s from millisecond objects in the approximate range of 0.001–0.01 s. | The histogram suggests groups with different periods, but visual separation alone does not constitute a formal test of distinct populations. |
 
-## 1. Classificação e associação dos pulsares
+## 1. Pulsar Classification and Associations
 
-### Distribuição de `TYPE`
+### Distribution of `TYPE`
 
-| Categoria | Frequência absoluta | Frequência relativa |
+| Category | Absolute Frequency | Relative Frequency |
 |---|---:|---:|
-| HE | 253 | 41,9% |
-| RRAT | 220 | 36,5% |
-| NRAD | 93 | 15,4% |
-| AXP | 24 | 4,0% |
-| XINS | 5 | 0,8% |
-| Sem identificação | 8 | 1,3% |
-| **Total classificado** | **603** | **13,9% da amostra** |
+| HE | 253 | 41.9% |
+| RRAT | 220 | 36.5% |
+| NRAD | 93 | 15.4% |
+| AXP | 24 | 4.0% |
+| XINS | 5 | 0.8% |
+| Unidentified | 8 | 1.3% |
+| **Total Classified** | **603** | **13.9% of the sample** |
 
-As categorias HE, RRAT e NRAD representam **93.8%** dos registros classificados nessa variável. AXP e XINS são tipos com detecção recente ou rara.
+The HE, RRAT, and NRAD categories account for **93.8%** of the records classified under this variable. AXP and XINS are types associated with recent or rare detections.
 
-### Distribuição de `TEM_ASSOC`
+### Distribution of `TEM_ASSOC`
 
-| Associação catalogada | Frequência absoluta | Frequência relativa |
+| Catalogued Association | Absolute Frequency | Relative Frequency |
 |---|---:|---:|
-| Com associação catalogada (`S`) | 683 | 15,7% |
-| Sem associação catalogada (`N`) | 3.668 | 84,3% |
-| **Total** | **4.351** | **100%** |
+| With catalogued association (`S`) | 683 | 15.7% |
+| Without catalogued association (`N`) | 3,668 | 84.3% |
+| **Total** | **4,351** | **100%** |
 
-A predominância de pulsares sem associação conhecida (84.3%) reflete o desafio de rastrear a origem desses objetos antigos, cujas evidências de formação frequentemente se dissipam.
+The predominance of pulsars without a known association (84.3%) reflects the challenge of tracing the origins of these old objects, whose formation evidence often dissipates over time.
 
-## 2. Distribuição e medidas de resumo
+## 2. Distribution and Summary Statistics
 
-| Variável | Média | Mediana | Coeficiente de variação (CV) |
+| Variable | Mean | Median | Coefficient of Variation (CV) |
 |---|---:|---:|---:|
-| `P0` — período | 0,85 s | 0,37 s | 220% |
-| `DM` — medida de dispersão | 351 pc/cm³ | 163 pc/cm³ | 98% |
-| `AGE` — idade característica | Aproximadamente 2 bilhões de anos | Aproximadamente 10 milhões de anos | 1570% |
+| `P0` — period | 0.85 s | 0.37 s | 220% |
+| `DM` — dispersion measure | 351 pc/cm³ | 163 pc/cm³ | 98% |
+| `AGE` — characteristic age | Approximately 2 billion years | Approximately 10 million years | 1570% |
 
-Nas três variáveis, a média é superior à mediana, o que é compatível com assimetria à direita. A diferença é particularmente expressiva em `AGE`, na qual poucos valores muito elevados podem influenciar fortemente a média. O CV de 1570% confirma a alta heterogeneidade dos dados.
+For all three variables, the mean is higher than the median, which is consistent with right-skewed distributions. This difference is particularly pronounced in `AGE`, where a few very high values can strongly influence the mean. The CV of 1570% confirms the high heterogeneity of the data.
 
-### Como interpretar o CV de 1570%?
+### How to Interpret a CV of 1570%?
 
-O coeficiente de variação é calculado pela razão entre o desvio-padrão e a média, multiplicada por 100:
+The coefficient of variation is calculated as the ratio of the standard deviation to the mean, multiplied by 100:
 
-**CV (%) = (desvio-padrão / média) × 100**
+**CV (%) = (standard deviation / mean) × 100**
 
-Um CV de **1570%** significa que o desvio-padrão corresponde a aproximadamente **15,7 vezes a média**. É uma medida de dispersão relativa extremamente elevada. Como a distribuição da idade característica é fortemente assimétrica, o CV deve ser interpretado com cautela e em conjunto com a mediana, os quantis e a visualização da distribuição.
+A **CV of 1570%** means that the standard deviation is approximately **15.7 times the mean**. This indicates an extremely high degree of relative dispersion. Since the characteristic age distribution is strongly skewed, the CV should be interpreted cautiously and alongside the median, quantiles, and distribution plots.
 
-O CV não comprova, por si só, a existência de subpopulações físicas. Para investigar grupos distintos, seriam necessárias análises adicionais e critérios explícitos de classificação.
+The CV does not, by itself, demonstrate the existence of physical subpopulations. Investigating distinct groups would require additional analyses and explicit classification criteria.
 
-## 3. Distribuições individuais
+## 3. Individual Distributions
 
 <img src="docs/Histograma_DM_AGE.png" width="600">
 
-### Medida de dispersão (`DM`)
+### Dispersion Measure (`DM`)
 
-- A maior concentração observada no recorte está entre **100 e 1000 pc/cm³**.
-- A frequência diminui em faixas mais altas.
-- A distribuição deve ser interpretada considerando distância, localização no meio interestelar, detectabilidade e critérios de inclusão no catálogo. Exemplo: Pulsares com DM alto estão em regiões de alta densidade ou grandes distâncias, o que dificulta sua detecção
+- The highest concentration observed in the dataset falls within the **100–1000 pc/cm³** range.
+- Frequency decreases at higher ranges.
+- The distribution should be interpreted considering distance, location in the interstellar medium, detectability, and catalogue inclusion criteria. For example, pulsars with high DM values are located in high-density regions or at greater distances, which makes their detection more difficult.
 
-**Interpretação:** a distribuição observada não depende apenas das propriedades físicas dos pulsares. Limitações de detecção e seleção da amostra podem influenciar quais objetos são encontrados e catalogados. O histograma, isoladamente, não permite quantificar um viés observacional nem identificar sua causa.
+**Interpretation:** The observed distribution does not depend solely on the physical properties of pulsars. Detection limitations and sample selection may influence which objects are discovered and catalogued. The histogram alone cannot quantify an observational bias or identify its cause.
 
-### Idade característica (`AGE`)
+### Characteristic Age (`AGE`)
 
-- Pico principal observado na faixa de **10⁶–10⁷ anos** (1 a 10 milhões de anos).
-- Cauda à direita que se estende até aproximadamente **10¹⁰ anos** (pulsares muito velhos, rotação lenta).
-- Valores mais baixos aparecem em faixas próximas de **10³–10⁵ anos** (pulsares jovens, rotação rápida).
+- Main observed peak in the **10⁶–10⁷ years** range (1 to 10 million years).
+- Right tail extending to approximately **10¹⁰ years** (very old pulsars with slow rotation).
+- Lower values appear in ranges close to **10³–10⁵ years** (young pulsars with rapid rotation).
 
-**Interpretação:** a diferença entre média e mediana mostra que a distribuição é fortemente assimétrica. A presença de valores extremos deve ser considerada ao resumir a variável; a idade característica também não deve ser confundida automaticamente com a idade real de cada pulsar.
+**Interpretation:** The difference between the mean and median shows that the distribution is strongly skewed. The presence of extreme values must be considered when summarizing this variable; characteristic age should not be interpreted as the actual age of each pulsar.
 
-## 4. Período de rotação (`P0`)
+## 4. Rotation Period (`P0`)
 
 <img src="docs/Histograma_P0.png" width="400">
 
-| Grupo exploratório | Faixa de período | Característica geral |
+| Exploratory Group | Period Range | General Characteristic |
 |---|---|---|
-| Pulsares com períodos mais longos | 0,5–5 s | Períodos relativamente longos em comparação com os pulsares de milissegundos. |
-| Pulsares de milissegundos | 0,001–0,01 s | Períodos extremamente curtos. |
+| Pulsars with longer periods | 0.5–5 s | Relatively long periods compared with millisecond pulsars. |
+| Millisecond pulsars | 0.001–0.01 s | Extremely short periods. |
 
-A distribuição mostra objetos com períodos muito curtos e outros com períodos mais longos. A diferença entre essas faixas é consistente com a distinção descritiva entre pulsares de milissegundos e outros grupos.
+The distribution shows objects with both very short and longer periods. The difference between these ranges is consistent with the descriptive distinction between millisecond pulsars and other groups.
 
-A análise de um histograma, entretanto, não basta para afirmar formalmente que há exatamente duas populações estatísticas. A quantidade de grupos e seus limites dependem dos critérios adotados e de análises adicionais.
+However, histogram analysis alone is not sufficient to formally establish that there are exactly two statistical populations. The number of groups and their boundaries depend on the criteria adopted and on additional analyses.
 
-## 5. Período por associação catalogada
+## 5. Rotation Period by Catalogued Association
 
 <img src="docs/Boxplot_P0_ASSOC.png" width="500">
 
-A comparação exploratória entre os grupos apresentou o seguinte padrão:
+The exploratory comparison between the groups showed the following pattern:
 
-| Grupo | Padrão observado no resumo exploratório |
+| Group | Pattern Observed in the Exploratory Summary |
 |---|---|
-| Com associação catalogada (`S`) | Períodos relativamente menores e menor dispersão. |
-| Sem associação catalogada (`N`) | Períodos relativamente maiores e maior dispersão. |
+| With catalogued association (`S`) | Relatively shorter periods and lower dispersion. |
+| Without catalogued association (`N`) | Relatively longer periods and higher dispersion. |
 
-Os dados indicam que pulsares com associação catalogada tendem a períodos mais curtos e distribuição mais homogênea em comparação aos sem associação. Entretanto, esse padrão descreve a amostra analisada e não demonstra que possuir uma associação catalogada cause diferenças no período. Os grupos podem diferir em outros aspectos, e a disponibilidade de associações pode estar relacionada a fatores observacionais e à composição da amostra.
+The data indicate that pulsars with a catalogued association tend to have shorter periods and a more homogeneous distribution compared with those without an association. However, this pattern describes the analyzed sample and does not demonstrate that having a catalogued association causes differences in rotation period. The groups may differ in other aspects, and the availability of associations may be related to observational factors and sample composition.
 
-## 6. Relação entre período e idade característica
+## 6. Relationship Between Rotation Period and Characteristic Age
 
 <img src="docs/Dispercao_P0_AGE.png" width="400">
 
-| Grupo exploratório | Comportamento observado |
+| Exploratory Group | Observed Behavior |
 |---|---|
-| Pulsares com `P0 ≥ 0,02 s` | A análise sugere aumento do período em função da idade característica em parte dos registros, compatível com o quadro geral de desaceleração rotacional. |
-| Pulsares com `P0 < 0,02 s` | Inclui objetos de período muito curto e idade característica elevada, aproximadamente entre 10⁸ e 10¹⁰ anos em parte da amostra. |
+| Pulsars with `P0 ≥ 0.02 s` | The analysis suggests an increase in rotation period as a function of characteristic age in part of the records, consistent with the general framework of rotational slowdown. |
+| Pulsars with `P0 < 0.02 s` | Includes objects with very short periods and high characteristic ages, approximately between 10⁸ and 10¹⁰ years in part of the sample. |
 
-Os pulsares de milissegundos podem apresentar períodos muito curtos mesmo com idades características elevadas. Esse padrão não deve ser chamado de “anômalo” apenas por diferir do comportamento de outros grupos: a interpretação física exige considerar os processos de evolução desses objetos e as limitações da idade característica.
+Millisecond pulsars can have very short periods even at high characteristic ages. This pattern should not be described as "anomalous" simply because it differs from the behavior of other groups: its physical interpretation requires consideration of the evolutionary processes of these objects and the limitations of characteristic age.
 
-## Glossário
+## Glossary
 
-| Termo | Significado |
+| Term | Meaning |
 |---|---|
-| **Pulsar** | Estrela de nêutrons que emite feixes de radiação observados como pulsos devido à rotação e à geometria do sistema. |
-| **Período de rotação (`P0`)** | Tempo necessário para uma rotação, medido em segundos. |
-| **Medida de dispersão (`DM`)** | Quantidade integrada de elétrons livres ao longo da linha de visada, expressa em pc/cm³; afeta a propagação dos sinais de rádio. |
-| **Idade característica (`AGE`)** | Estimativa derivada de propriedades de rotação, que não equivale necessariamente à idade real do objeto. |
-| **Associação catalogada** | Relação registrada no catálogo entre um pulsar e outro objeto ou estrutura, conforme a classificação consultada. |
-| **Média** | Soma dos valores dividida pelo número de observações; pode ser influenciada por valores extremos. |
-| **Mediana** | Valor central da distribuição ordenada; é menos sensível a valores extremos do que a média. |
-| **Coeficiente de variação (CV)** | Desvio-padrão dividido pela média e expresso em porcentagem; mede dispersão relativa e requer cautela em distribuições assimétricas. |
-| **Viés observacional** | Diferença sistemática entre os objetos detectados e a população que se pretende estudar, causada por limites ou condições de observação. |
+| **Pulsar** | A neutron star that emits beams of radiation observed as pulses due to its rotation and the geometry of the system. |
+| **Rotation Period (`P0`)** | The time required for one rotation, measured in seconds. |
+| **Dispersion Measure (`DM`)** | The integrated column density of free electrons along the line of sight, expressed in pc/cm³; it affects the propagation of radio signals. |
+| **Characteristic Age (`AGE`)** | An estimate derived from rotational properties, which is not necessarily equivalent to the object's actual age. |
+| **Catalogued Association** | A relationship recorded in the catalogue between a pulsar and another object or structure, according to the classification used. |
+| **Mean** | The sum of all values divided by the number of observations; it can be influenced by extreme values. |
+| **Median** | The central value of an ordered distribution; it is less sensitive to extreme values than the mean. |
+| **Coefficient of Variation (CV)** | The standard deviation divided by the mean and expressed as a percentage; it measures relative dispersion and should be interpreted cautiously in skewed distributions. |
+| **Observational Bias** | A systematic difference between the detected objects and the population intended for study, caused by observational limitations or conditions. |
 
-## Limitações
+## Limitations
 
-- O catálogo é uma fonte observacional: a amostra disponível depende de detecção, acompanhamento, medição e atualização dos registros.
-- Valores ausentes ou não registrados podem afetar a quantidade de observações utilizada em cada análise.
-- A variável `TEM_ASSOC` simplifica a informação de associação e não representa uma classificação definitiva da origem física.
-- Média, mediana e CV resumem aspectos diferentes da distribuição. Em variáveis fortemente assimétricas, é importante considerar quantis e gráficos.
-- As relações observadas são exploratórias. Correlação ou diferença entre grupos não estabelece causalidade.
-- Resultados podem variar conforme a versão do catálogo e os critérios de filtragem usados para extrair os dados.
+- The catalogue is an observational source: the available sample depends on detection, follow-up observations, measurements, and record updates.
+- Missing or unrecorded values may affect the number of observations used in each analysis.
+- The `TEM_ASSOC` variable simplifies association information and does not represent a definitive classification of physical origin.
+- Mean, median, and CV summarize different aspects of a distribution. For strongly skewed variables, quantiles and plots should also be considered.
+- The observed relationships are exploratory. Correlation or differences between groups do not establish causality.
+- Results may vary depending on the catalogue version and the filtering criteria used to extract the data.
 
-## Tecnologias e ferramentas
+## Technologies and Tools
 
-| Tecnologia | Uso |
+| Technology | Use |
 |---|---|
-| Python | Linguagem principal |
-| `psrqpy` | Acesso ao catálogo ATNF |
-| `pandas` | Manipulação e análise tabular |
-| `numpy` | Cálculos numéricos |
-| `matplotlib` e `seaborn` | Visualização de dados |
-| Google Colab | Ambiente de desenvolvimento em nuvem |
+| Python | Main programming language |
+| `psrqpy` | Access to the ATNF catalogue |
+| `pandas` | Tabular data manipulation and analysis |
+| `numpy` | Numerical calculations |
+| `matplotlib` and `seaborn` | Data visualization |
+| Google Colab | Cloud-based development environment |
 
-## Como reproduzir
+## How to Reproduce the Analysis
 
-1. Abra o [notebook no Google Colab](https://colab.research.google.com/github/sofiajob/ATNF-pulsar-catalogue-analysis/blob/main/notebooks/C%C3%B3pia_de_estatistica_eda_extracao_dados.ipynb).
-2. Execute as células na ordem apresentada.
-3. Caso seja solicitado, instale as dependências indicadas no notebook.
-4. Consulte a documentação do [`psrqpy`](https://psrqpy.readthedocs.io/) e o [catálogo oficial ATNF](https://www.atnf.csiro.au/research/pulsar/psrcat/) para informações sobre os dados.
+1. Open the [notebook in Google Colab](https://colab.research.google.com/github/sofiajob/ATNF-pulsar-catalogue-analysis/blob/main/notebooks/C%C3%B3pia_de_estatistica_eda_extracao_dados.ipynb).
+2. Run the cells in the order presented.
+3. If prompted, install the dependencies specified in the notebook.
+4. Consult the [`psrqpy` documentation](https://psrqpy.readthedocs.io/) and the [official ATNF catalogue](https://www.atnf.csiro.au/research/pulsar/psrcat/) for information about the data.
 
-Os resultados podem variar de acordo com a versão do catálogo consultada e os filtros aplicados.
+Results may vary depending on the catalogue version accessed and the filters applied.
 
-## Referências
-- [ATNF Pulsar Catalogue](https://www.atnf.csiro.au/research/pulsar/psrcat) - Base de dados oficial
+## References
+- [ATNF Pulsar Catalogue](https://www.atnf.csiro.au/research/pulsar/psrcat) - Official database
 - **Manchester, R. N.** et al. (2005) - The Australia Telescope National Facility Pulsar Catalogue. *The Astronomical Journal*, 129(4), 1993. DOI: [10.1086/428488](https://doi.org/10.1086/428488)
 - **Pitkin, M.** (2018) - psrqpy: Python interface for ATNF catalogue. *JOSS*, 3(22), 538. DOI: [10.21105/joss.00538](https://doi.org/10.21105/joss.00538) | [GitHub](https://github.com/mattpitkin/psrqpy)
 
-## Autoria
-
+## Author
 **Sofia Fernandes Job Junqueira**
 
-Projeto independente de análise exploratória, estatística aplicada e visualização de dados científicos.
+Independent project focused on exploratory analysis, applied statistics, and scientific data visualization.
